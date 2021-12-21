@@ -290,3 +290,48 @@ function refresh() {
     }
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// New functions created specifically for ScoreCard website
+
+function getFinalWeekTotal() {
+  let test = document.getElementsByClassName("weekTotal1");
+  // let tester = [].slice.call(test);
+  let tester = Array.from(test);
+  // let ppp = arrayOfWeekTotalCells;
+
+  // arrayOfWeekTotalCells.forEach(element => console.log(element.innerHTML));
+  console.log(tester);
+  console.log(tester[0]);
+  console.log(tester[0].innerHTML);
+
+
+  let newArray = tester.map(function(town) {
+    return town;
+  });
+  console.log(newArray);
+
+}
+
+let testingObject = {
+  name: "xxx",
+  value: 5
+}
+
+console.log(testingObject);
