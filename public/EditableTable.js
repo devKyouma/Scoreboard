@@ -75,7 +75,7 @@ function userSubmit() {
 // date, let xxx = new Date();
 function shortDate(date) {
   let dayOfMonth = date.getDate();
-  let month = (date.getMonth()+1);
+  let month = (date.getMonth() + 1);
   let year = date.getFullYear();
   let shortDate = month + "/" + dayOfMonth + "/" + year;
   return shortDate;
@@ -160,16 +160,16 @@ function howManyRowsToAdd() {
   // This gets the number inputed into the input
   let numberOfRowsToAdd = document.getElementById("numberOfWeeksInput");
 
-// This runs the addNewRow function for the amount of times entered
+  // This runs the addNewRow function for the amount of times entered
   for (i = 0; i < numberOfRowsToAdd.value; i++) {
     addNewRow();
   }
 
 
-// After I add new rows i want to wipe the arrays of daily hours rows and week total
-// cells BEFORE i run the functions that pushes to them bc if i dont, the arrays
-// will keep pushing on top of each other and double count. I only want to create
-// these arrays when changes are made to the number of rows.
+  // After I add new rows i want to wipe the arrays of daily hours rows and week total
+  // cells BEFORE i run the functions that pushes to them bc if i dont, the arrays
+  // will keep pushing on top of each other and double count. I only want to create
+  // these arrays when changes are made to the number of rows.
   arrayOfDailyHoursRows = [];
   arrayOfWeekTotalCells = [];
 
@@ -221,9 +221,9 @@ function addNewRow() {
 // the cells variable.
 function refresh() {
 
-// This for loop is what lets me click and edit each cell
+  // This for loop is what lets me click and edit each cell
 
-// This for loop creates an onclick listener for every cell in the table
+  // This for loop creates an onclick listener for every cell in the table
   for (let i = 0; i < cells.length; i++) {
     cells[i].onclick = function() {
 
@@ -299,39 +299,20 @@ function refresh() {
 
 
 
-
-
-
-
-
-
-
-
-
 // New functions created specifically for ScoreCard website
 
+// This is going to be used to submit the final week total calcs to the chart
 function getFinalWeekTotal() {
-  let test = document.getElementsByClassName("weekTotal1");
-  // let tester = [].slice.call(test);
-  let tester = Array.from(test);
-  // let ppp = arrayOfWeekTotalCells;
 
-  // arrayOfWeekTotalCells.forEach(element => console.log(element.innerHTML));
-  console.log(tester);
-  console.log(tester[0]);
-  console.log(tester[0].innerHTML);
-
-
-  let newArray = tester.map(function(town) {
-    return town;
+  // Break down first layer of array
+  let firstLayerArray = arrayOfWeekTotalCells.map(function(cell) {
+    return cell[0];
   });
-  console.log(newArray);
+
+  // Get the innerHTML from each array
+  let finalWeekTotalCalc = firstLayerArray.map(function(hours) {
+    return Number(hours.innerHTML);
+  });
+  return finalWeekTotalCalc;
 
 }
-
-let testingObject = {
-  name: "xxx",
-  value: 5
-}
-
-console.log(testingObject);
