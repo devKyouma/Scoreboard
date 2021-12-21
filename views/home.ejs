@@ -1,21 +1,81 @@
 <!-- This lets you use a header from a different html file -->
 <%- include('partials/myheader'); %>
 
+
+
+
+
+
+
+
+<div id="userInput">
+  <label>How many rows to add? </label>
+  <input id="numberOfWeeksInput" type="text" name="" value="">
+
+  <button type="button" onclick="userSubmit()">Submit</button>
+</div>
+
+
+<table id="mainTable">
+  <tr>
+    <th>Week</th>
+    <th>Date</th>
+    <th>Monday</th>
+    <th>Tuesday</th>
+    <th>Wednesday</th>
+    <th>Thursday</th>
+    <th>Friday</th>
+    <th>Saturday</th>
+    <th>Sunday</th>
+    <th>Week Total</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td id="firstDate">12/13/21</td>
+    <td class="row1 cells"> </td>
+    <td class="row1 cells"> </td>
+    <td class="row1 cells"> </td>
+    <td class="row1 cells"> </td>
+    <td class="row1 cells"> </td>
+    <td class="row1 cells"> </td>
+    <td class="row1 cells"> </td>
+    <td class="weekTotal1"> </td>
+  </tr>
+
+
+
+</table>
+
+
+
+
+<script src="EditableTable.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <h1><%=startGoals[0].projectName%></h1> <br>
 
 
 <p>Weekly Goal: <%=startGoals[0].goalHoursWeek%> hours </p>
 <p>Number of Weeks: <%=startGoals[0].totalWeeks%> </p>
 <p>Total Hours: <%=startGoals[0].totalWeeks * startGoals[0].goalHoursWeek%> </p> <br>
-
-
-
-
-
-
-
-
-
 
 <!-- //////////////////////////////////////////////////////////// Start of chart -->
 

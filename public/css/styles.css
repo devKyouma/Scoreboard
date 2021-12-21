@@ -40,3 +40,33 @@
 .content {
   padding-top: 40px;
 }
+
+
+
+
+/* Table format */
+
+table, th, td {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  border: 1px solid black;
+  padding: 5px;
+}
+
+table {
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  table-layout: fixed;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+th {
+  background-color: gray;
+  color: white;
+}
+
+/* End of table format */
