@@ -1,0 +1,27 @@
+<!-- This lets you use a header from a different html file -->
+<%- include('partials/myheader'); %>
+
+<h1>Compose</h1><br>
+
+<form action="/compose" method="post">
+  <div class="mb-3">
+    <label class="form-label">Date</label>
+    <input type="text" class="form-control" name="composeDate" value="01/03/2009" ></input>
+  </div> <br>
+
+  <div class="mb-3">
+    <label class="form-label">Hours</label>
+    <input type="text" class="form-control" name="composeHours">
+  </div> <br>
+
+  <div class="mb-3">
+    <label class="form-label">Notes</label>
+    <textarea class="form-control" name="composeNotes" rows="5" cols="100"></textarea>
+  </div> <br>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
+<!-- This lets you use a footer from a different html file -->
+<%- include('partials/footer'); %>
