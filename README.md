@@ -2,6 +2,8 @@
 
 * Right now the website works by creating a new goal where you enter some inputs, then log in each study session in "Compose". This will update the chart. I need to set it up so that I can take the data from the table and use that for the chart.
 
+  * Read more about "window." and why i have to use this for my charts to destory it.
+  * Look into possible alternatives to detroying chart to recreate one. Maybe using the update function?
   * Figure out how to get the chart out of the script and into my EditableTable js file so that i can use the variables from there. Or see if i can put it in a different js file but use the getFinalWeekTotal function in that file. Maybe I just have to move the function to that new file?
   * Pass that object to the chart
   * The object with the hours will be available as long as i dont refresh the server but if i go to a new page and then go back to home, the table will refresh. I need to create another function that uses the saved object, and recreates what was there before.

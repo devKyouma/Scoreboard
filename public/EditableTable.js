@@ -198,6 +198,7 @@ function addNewRow() {
       newCell.innerHTML = rowCount;
     } else if (i === 1) {
       let nextDate = shortDate(addDays(startingDate, 7));
+      newCell.className = "date";
       newCell.innerHTML = nextDate;
     } else if (i === 9) {
       newCell.className = "weekTotal" + rowCount;
@@ -266,6 +267,11 @@ function refresh() {
           // I need to recalculate the weekly total after a change is made
           updateWeekTotal();
 
+          ////////// New code specifically for ScoreCard
+
+          updateChart();
+
+          ////////// End of new code specifically for ScoreCard
 
         } else {
           td.removeAttribute("data-clicked");
@@ -289,30 +295,4 @@ function refresh() {
       this.firstElementChild.select();
     }
   }
-}
-
-
-
-
-
-
-
-
-
-// New functions created specifically for ScoreCard website
-
-// This is going to be used to submit the final week total calcs to the chart
-function getFinalWeekTotal() {
-
-  // Break down first layer of array
-  let firstLayerArray = arrayOfWeekTotalCells.map(function(cell) {
-    return cell[0];
-  });
-
-  // Get the innerHTML from each array
-  let finalWeekTotalCalc = firstLayerArray.map(function(hours) {
-    return Number(hours.innerHTML);
-  });
-  return finalWeekTotalCalc;
-
 }
