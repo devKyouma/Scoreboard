@@ -3,7 +3,7 @@
 * Right now the website works by creating a new goal where you enter some inputs, then log in each study session in "Compose". This will update the chart. I need to set it up so that I can take the data from the table and use that for the chart.
 
 
-  * Pass that object to the chart
+  * Add a new chart showing cumulative progress and also plot the cumulative goal on same chart
   * The object with the hours will be available as long as i dont refresh the server but if i go to a new page and then go back to home, the table will refresh. I need to create another function that uses the saved object, and recreates what was there before.
   * Change cell colors of editable values which are the hours for each day
 
@@ -12,7 +12,7 @@
   * Fix structure of convertWeekTotalCellsToArray function so that Im not creating an array with only one value. So instead of an array which has arrays of each week total, it will just be an array of the week totals. I think i can just move the "calcWeekTotalArray" and push outside the for loop and it should work. But i would also need to update the updateWeekTotal function too.
   * Read more about "window." and why i have to use this for my charts to destory it.
   * Look into possible alternatives to detroying chart to recreate one. Maybe using the update function?
-  * In the EditableTable file, i should have made the weekTotalx IDs instead of classes. There is only going to be one cell for each week total and that would make it cleaner. 
+  * In the EditableTable file, i should have made the weekTotalx IDs instead of classes. There is only going to be one cell for each week total and that would make it cleaner.
 
 # Done
 

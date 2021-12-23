@@ -53,7 +53,7 @@ let totalHours = posts.reduce(function (accumlator, currentValue){
   return accumlator + currentValue.hours;
 }, 0);
 
-console.log(totalHours);
+// console.log(totalHours);
 
 
 

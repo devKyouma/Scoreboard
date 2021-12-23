@@ -2,26 +2,14 @@
 <%- include('partials/myheader'); %>
 
 
+<h1><%=startGoals[0].projectName%></h1> <br>
 
-
-
-
-<!-- Start of table -->
-
-<!-- <div id="userInput">
-  <label>How many rows to add? </label>
-  <input id="numberOfWeeksInput" type="text" name="" value="">
-
-  <button type="button" onclick="userSubmit()">Submit</button>
-</div> <br> -->
-
-<!-- Delete later -->
-<p>WILL NEED TO DELETE THIS LATER, FIGURE OUT A BETTER WAY TO PASS THIS TO TABLE</p>
-<p id="userNumberOfWeeks"><%=startGoals[0].totalWeeks%></p>
-<p id="userNumberOfHours"><%=startGoals[0].goalHoursWeek%></p>
-
-<!-- Delete later -->
-
+<p class="sameLine">Weekly Goal: </p>
+<p class="sameLine" id="userNumberOfHours"> <%=startGoals[0].goalHoursWeek%> </p> <br>
+<p class="sameLine">Number of Weeks: </p>
+<p class="sameLine" id="userNumberOfWeeks"> <%=startGoals[0].totalWeeks%> </p> <br>
+<p class="sameLine">Total Hours: </p>
+<p class="sameLine"> <%=startGoals[0].totalWeeks * startGoals[0].goalHoursWeek%> </p> <br>
 
 <table id="mainTable">
   <tr>
@@ -69,12 +57,8 @@
 
 
 
-<h1><%=startGoals[0].projectName%></h1> <br>
 
 
-<p>Weekly Goal: <%=startGoals[0].goalHoursWeek%> hours </p>
-<p>Number of Weeks: <%=startGoals[0].totalWeeks%> </p>
-<p>Total Hours: <%=startGoals[0].totalWeeks * startGoals[0].goalHoursWeek%> </p> <br>
 
 <!-- //////////////////////////////////////////////////////////// Start of chart -->
 
@@ -89,79 +73,10 @@ I can just change the size of my div -->
 
 <script src="Chart.js"></script>
 
-<!--
-<script>
-
-const data = {
-  <%# I dont fully understand why i have to do the json stringify but if i didnt,
-  the labels would be passed as a normal string. Doing the stringfy made it
-  pass through correctly as an array.
-  https://stackoverflow.com/questions/52315122/getting-string-array-from-node-js-to-ejs
-   %>
-  labels: <%- JSON.stringify(labels)%>,
-  datasets: [{
-    label: 'Total Hours',
-    backgroundColor: 'rgb(255, 99, 132)',
-    borderColor: 'rgb(255, 99, 132)',
-    data: <%- JSON.stringify(hoursData)%>,
-  }]
-};
-
-const config = {
-  type: 'line',
-  data: data,
-  options: {
-    // Setting this to false let me change the size of the canvas in html
-    responsive: false,
-    // Not exactly sure why i needed to add plugins and then legend, but thats
-    // what the doc said to do.
-    plugins: {
-      legend: {
-        position: "bottom"
-      }
-    }
-  }
-};
-
-  const myChart = new Chart(
-    document.getElementById('myChart'),
-    config
-  );
-</script>
-
--->
-
-<%# ////////////////////////////////////////////////////////////End of chart %>
+<!-- //////////////////////////////////////////////////////////// End of chart -->
 
 
 
-
-
-
-
-
-
-
-<% posts.forEach(function(eachPost) { %>
-<h1><%=eachPost.date%></h1>
-
-<!-- Instead of posting the entire post on the home page, i am showing only -->
-<!-- the first 100 characters and adding a "...", but only adding that if  -->
-<!-- the post had more than 100 characters. So i used a new if shortcut i learned  -->
-<!-- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator -->
-<p> <%=eachPost.hours%> Hours</p>
-
-<p> <%=eachPost.notes.slice(0, 100) + (eachPost.notes.length > 100 ? " ..." : "")%>
-</p> <br>
-<% }) %>
-
-
-<%# This helps visualize the difference between the 2 for the labels section in
-the chart. You can see that without stringify, labels come through as normal string
- and not an array %>
-<p><%- JSON.stringify(labels)%></p>
-<p><%=labels%></p>
-<p><%=posts[0].date%></p>
 
 
 

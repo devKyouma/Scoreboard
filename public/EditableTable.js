@@ -66,6 +66,8 @@ function userSubmit() {
   cells = document.getElementsByClassName("cells");
   refresh();
 
+  cumulativeGoal();
+
 }
 
 
@@ -278,6 +280,7 @@ function refresh() {
           ////////// New code specifically for ScoreCard
           updateChart();
           weeklyDifference();
+          cumulativeProgress();
           ////////// End of new code specifically for ScoreCard
 
         } else {
@@ -310,6 +313,8 @@ function refresh() {
 
 /////////////// New code written for ScoreCard
 
+
+
 // Calculate and enter the difference between Week Total and Weekly Goal
 function weeklyDifference() {
   // This gets the number inputed by user for the goal of number of hours each week
@@ -332,14 +337,56 @@ function weeklyDifference() {
   }
 }
 
-function testing() {
-  let i = 3;
-  let getWeekTotal = document.getElementsByClassName("weekTotal" + i);
-  let newWeekTotal = Number(getWeekTotal[0].innerHTML);
+// Calculate and enter cumulative progress
+// MUST BE RUN AFTER getFinalWeekTotal SINCE IT USES DATAPOINTS VARIABLE
+function cumulativeProgress() {
+  let rowCount = table.rows.length;
 
-  console.log(newWeekTotal);
+  for (let i = 1; i < rowCount; i++) {
+    let getCumulativeProgress = document.getElementsByClassName("cumulativeProgress" + i);
+
+    // This takes the dataPoints (array of week totals) and cuts it off up to
+    // the current row
+    let currentDataPoints = [];
+    currentDataPoints = dataPoints.slice(0, i);
+
+    let calcCurrentProgress = currentDataPoints.reduce(function(accumlator, currentValue) {
+      return accumlator + currentValue;
+    }, 0);
+
+    getCumulativeProgress[0].innerHTML = calcCurrentProgress;
+  }
+}
+
+// Calculates cumulative goal and is only ran once in userSubmit
+function cumulativeGoal() {
+  let rowCount = table.rows.length;
+  let getNumberOHours = document.getElementById("userNumberOfHours");
+  let numberOfHours = Number(getNumberOHours.innerHTML);
+
+  for (let i = 1; i < rowCount; i++) {
+    let getCumulativeGoal = document.getElementsByClassName("cumulativeGoal" + i);
+    getCumulativeGoal[0].innerHTML = numberOfHours * i;
+  }
+}
+
+
+
+
+
+// This is just for testing
+function testing() {
+
+  // let uuu = dataPoints[0] + dataPoints[1];
+  let uuu = dataPoints.splice(0,3);
+
+  console.log(uuu);
 
 }
+
+
+
+
 
 // Put this userSubmit here at the end so that it runs when the page loads. It
 // gets the value for number of rows to add from the page so no need to input anything
