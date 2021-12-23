@@ -158,10 +158,12 @@ function updateWeekTotal() {
 
 function howManyRowsToAdd() {
   // This gets the number inputed into the input
-  let numberOfRowsToAdd = document.getElementById("numberOfWeeksInput");
+  let getNumberOfWeeks = document.getElementById("userNumberOfWeeks");
+  // Convert it to a number
+  let numberOfRowsToAdd = Number(getNumberOfWeeks.innerHTML);
 
   // This runs the addNewRow function for the amount of times entered
-  for (i = 0; i < numberOfRowsToAdd.value; i++) {
+  for (i = 0; i < numberOfRowsToAdd; i++) {
     addNewRow();
   }
 
@@ -202,6 +204,12 @@ function addNewRow() {
       newCell.innerHTML = nextDate;
     } else if (i === 9) {
       newCell.className = "weekTotal" + rowCount;
+    } else if (i === 10) {
+      newCell.className = "weekDiff" + rowCount;
+    } else if (i === 11) {
+      newCell.className = "cumulativeProgress" + rowCount;
+    } else if (i === 12) {
+      newCell.className = "cumulativeGoal" + rowCount;
     } else {
       newCell.className = "cells row" + rowCount;
     }
@@ -268,9 +276,8 @@ function refresh() {
           updateWeekTotal();
 
           ////////// New code specifically for ScoreCard
-
           updateChart();
-
+          weeklyDifference();
           ////////// End of new code specifically for ScoreCard
 
         } else {
@@ -296,3 +303,44 @@ function refresh() {
     }
   }
 }
+
+
+
+
+
+/////////////// New code written for ScoreCard
+
+// Calculate and enter the difference between Week Total and Weekly Goal
+function weeklyDifference() {
+  // This gets the number inputed by user for the goal of number of hours each week
+  let getNumberOHours = document.getElementById("userNumberOfHours");
+  // Convert it to a number
+  let numberOfHours = Number(getNumberOHours.innerHTML);
+
+  let rowCount = table.rows.length;
+
+  for (let i = 1; i < rowCount; i++) {
+    let getWeekTotal = document.getElementsByClassName("weekTotal" + i);
+    // Convert it to a number
+    let numberWeekTotal = Number(getWeekTotal[0].innerHTML);
+
+    let calcWeekDiff = numberWeekTotal - numberOfHours
+
+    let getWeekDiff = document.getElementsByClassName("weekDiff" + i);
+    // console.log(getWeekDiff[0]);
+    getWeekDiff[0].innerHTML = calcWeekDiff;
+  }
+}
+
+function testing() {
+  let i = 3;
+  let getWeekTotal = document.getElementsByClassName("weekTotal" + i);
+  let newWeekTotal = Number(getWeekTotal[0].innerHTML);
+
+  console.log(newWeekTotal);
+
+}
+
+// Put this userSubmit here at the end so that it runs when the page loads. It
+// gets the value for number of rows to add from the page so no need to input anything
+userSubmit();

@@ -26,8 +26,13 @@ function refreshChart() {
     type: 'line',
     data: data,
     options: {
-      // Setting this to false let me change the size of the canvas in html
-      responsive: false,
+
+      scales: {
+        y: {
+          min: 0
+        }
+      },
+
       // Not exactly sure why i needed to add plugins and then legend, but thats
       // what the doc said to do.
       plugins: {
@@ -35,6 +40,7 @@ function refreshChart() {
           position: "bottom"
         }
       }
+
     }
   };
 
@@ -43,6 +49,7 @@ function refreshChart() {
   // But it wouldnt let me use the destroy function if i used that code so i had to
   // use window. instead.
   // let myChart = new Chart(
+  // https://stackoverflow.com/questions/47461720/destroying-chart-js-is-not-working-when-chart-created-inside-function-chart-de
   window.myChart = new Chart(
     document.getElementById('myChart'),
     config
@@ -73,8 +80,8 @@ function getFinalWeekTotal() {
 
   dataPoints = dataPoints.concat(finalWeekTotalCalc);
 
-  console.log("Week Totals: ");
-  console.log(dataPoints);
+  // console.log("Week Totals: ");
+  // console.log(dataPoints);
 }
 
 
@@ -100,8 +107,8 @@ function getArrayOfDates() {
   // into the labels the way i want it.
   // https://stackoverflow.com/questions/4156101/copy-array-items-into-another-array
   labels = labels.concat(finalDateArray);
-  console.log("Labels: ");
-  console.log(labels);
+  // console.log("Labels: ");
+  // console.log(labels);
 }
 
 

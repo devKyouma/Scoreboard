@@ -36,7 +36,7 @@ let day3 = {
 
 let testGoals = {
   projectName: "Learn to Code",
-  totalWeeks: 13,
+  totalWeeks: 4,
   goalHoursWeek: 14,
 }
 
@@ -54,11 +54,6 @@ let totalHours = posts.reduce(function (accumlator, currentValue){
 }, 0);
 
 console.log(totalHours);
-
-
-
-
-
 
 
 

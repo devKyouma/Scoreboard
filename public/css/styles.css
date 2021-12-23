@@ -57,7 +57,7 @@ table, th, td {
 table {
   margin-left: auto;
   margin-right: auto;
-  width: 80%;
+  width: 100%;
   table-layout: fixed;
 }
 
@@ -71,3 +71,11 @@ th {
 }
 
 /* End of table format */
+
+
+
+
+
+.chartBox {
+  width: 90%;
+}

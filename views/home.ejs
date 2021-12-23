@@ -8,12 +8,19 @@
 
 <!-- Start of table -->
 
-<div id="userInput">
+<!-- <div id="userInput">
   <label>How many rows to add? </label>
   <input id="numberOfWeeksInput" type="text" name="" value="">
 
   <button type="button" onclick="userSubmit()">Submit</button>
-</div> <br>
+</div> <br> -->
+
+<!-- Delete later -->
+<p>WILL NEED TO DELETE THIS LATER, FIGURE OUT A BETTER WAY TO PASS THIS TO TABLE</p>
+<p id="userNumberOfWeeks"><%=startGoals[0].totalWeeks%></p>
+<p id="userNumberOfHours"><%=startGoals[0].goalHoursWeek%></p>
+
+<!-- Delete later -->
 
 
 <table id="mainTable">
@@ -28,6 +35,9 @@
     <th>Saturday</th>
     <th>Sunday</th>
     <th>Week Total</th>
+    <th>Weekly Difference</th>
+    <th>Cumulative Progress</th>
+    <th>Cumulative Goal</th>
   </tr>
   <tr>
     <td>1</td>
@@ -40,20 +50,15 @@
     <td class="row1 cells"> </td>
     <td class="row1 cells"> </td>
     <td class="weekTotal1"> </td>
+    <td class="weekDiff1"> </td>
+    <td class="cumulativeProgress1"> </td>
+    <td class="cumulativeGoal1"> </td>
   </tr>
 </table> <br>
 
 <script src="EditableTable.js"></script>
 
 <!-- End of table -->
-
-
-
-
-
-
-
-
 
 
 
@@ -73,7 +78,14 @@
 
 <!-- //////////////////////////////////////////////////////////// Start of chart -->
 
-<canvas id="myChart" width="400" height="400"></canvas>
+<!-- Since my chart is respsonsive, if i want to change the size of the chart
+I can just change the size of my div -->
+<div class="chartBox">
+  <canvas id="myChart"></canvas>
+</div>
+
+
+<!-- <canvas id="myChart" width="600" height="400"></canvas> -->
 
 <script src="Chart.js"></script>
 
@@ -120,10 +132,6 @@ const config = {
 -->
 
 <%# ////////////////////////////////////////////////////////////End of chart %>
-
-
-
-
 
 
 
