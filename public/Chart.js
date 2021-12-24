@@ -8,17 +8,21 @@
 // ];
 
 let labels = [];
-let dataPoints = [];
+let weekTotalDataPoints = [];
+let cumulativeProgressDataPoints = [];
+let cumulativeGoalDataPoints = [];
 
-function refreshChart() {
+
+// Plots Weekly Totals
+function refreshChart1() {
 
   const data = {
     labels: labels,
     datasets: [{
-      label: 'Total Hours',
+      label: 'Weekly Total Hours',
       backgroundColor: 'rgb(255, 99, 132)',
       borderColor: 'rgb(255, 99, 132)',
-      data: dataPoints,
+      data: weekTotalDataPoints,
     }]
   };
 
@@ -38,20 +42,78 @@ function refreshChart() {
       plugins: {
         legend: {
           position: "bottom"
+        },
+        title: {
+          display: true,
+          text: 'Custom Chart Title'
         }
       }
 
     }
   };
 
-
   // Originally i used the code commented out below which is directly from chartjs docs.
   // But it wouldnt let me use the destroy function if i used that code so i had to
   // use window. instead.
   // let myChart = new Chart(
   // https://stackoverflow.com/questions/47461720/destroying-chart-js-is-not-working-when-chart-created-inside-function-chart-de
-  window.myChart = new Chart(
-    document.getElementById('myChart'),
+  window.myChart1 = new Chart(
+    document.getElementById('myChart1'),
+    config
+  );
+
+}
+
+
+
+// Plots Cumulative Progress and Goal
+function refreshChart2() {
+
+  const data = {
+    labels: labels,
+    datasets: [{
+        label: 'Progress',
+        backgroundColor: 'rgb(255, 99, 132)',
+        borderColor: 'rgb(255, 99, 132)',
+        data: cumulativeProgressDataPoints,
+      },
+      {
+        label: 'Goal',
+        backgroundColor: 'rgb(200, 99, 12)',
+        borderColor: 'rgb(200, 99, 12)',
+        data: cumulativeGoalDataPoints,
+      }
+    ]
+  };
+
+  const config = {
+    type: 'line',
+    data: data,
+    options: {
+
+      scales: {
+        y: {
+          min: 0
+        }
+      },
+
+      // Not exactly sure why i needed to add plugins and then legend, but thats
+      // what the doc said to do.
+      plugins: {
+        legend: {
+          position: "bottom"
+        },
+        title: {
+          display: true,
+          text: 'Custom Chart Title'
+        }
+      }
+
+    }
+  };
+
+  window.myChart2 = new Chart(
+    document.getElementById('myChart2'),
     config
   );
 
@@ -60,29 +122,47 @@ function refreshChart() {
 
 
 
+
+
+
+
+
 // New functions created specifically for ScoreCard website
 
-// This gets an array of the final week totals to use as chart data points
-function getFinalWeekTotal() {
+// This creates 3 arrays to use as chart data points. 1 Week Totals 2 Cumulative
+// Progress and 3 Cumulative Goal
+function getDataPoints() {
 
   // First reset array of labels in case you run this multiple times
-  dataPoints = [];
+  weekTotalDataPoints = [];
+  cumulativeProgressDataPoints = [];
+  cumulativeGoalDataPoints = [];
 
-  // Break down first layer of array
-  let firstLayerArray = arrayOfWeekTotalCells.map(function(cell) {
-    return cell[0];
-  });
+  let rowCount = table.rows.length;
 
-  // Get the innerHTML from each array
-  let finalWeekTotalCalc = firstLayerArray.map(function(hours) {
-    return Number(hours.innerHTML);
-  });
+// All 3 of for loops are doing the same thing. Get each cell in the column,
+// convert the value to a number, then push that number to the array
+  for (let i = 1; i < rowCount; i++) {
+    let currentWeek = document.getElementsByClassName("weekTotal" + i);
+    let currentWeekValue = Number(currentWeek[0].innerHTML);
+    weekTotalDataPoints.push(currentWeekValue);
+  }
 
-  dataPoints = dataPoints.concat(finalWeekTotalCalc);
+  for (let i = 1; i < rowCount; i++) {
+    let currentWeek = document.getElementsByClassName("cumulativeProgress" + i);
+    let currentWeekValue = Number(currentWeek[0].innerHTML);
+    cumulativeProgressDataPoints.push(currentWeekValue);
+  }
 
-  // console.log("Week Totals: ");
-  // console.log(dataPoints);
+  for (let i = 1; i < rowCount; i++) {
+    let currentWeek = document.getElementsByClassName("cumulativeGoal" + i);
+    let currentWeekValue = Number(currentWeek[0].innerHTML);
+    cumulativeGoalDataPoints.push(currentWeekValue);
+  }
 }
+
+// This gets an array of the cumulative progress and cumulative goal to use as
+// chart data points
 
 
 // This gets an array of the dates to use as chart labels
@@ -97,7 +177,7 @@ function getArrayOfDates() {
   let dateArray = Array.from(getDates);
 
   // Convert array to the actual dates within each cell, similar to what i did
-  // in the getFinalWeekTotal function
+  // in the getDataPoints function
   let finalDateArray = dateArray.map(function(dates) {
     return dates.innerHTML;
   });
@@ -117,13 +197,16 @@ function updateChart() {
   // there is a chart to destroy. So if the labels array is empty, dont destroy
   // anything. If there is a value in labels, I need to destroy before i can update
   if (labels.length === 0) {
-    getFinalWeekTotal();
+    getDataPoints();
     getArrayOfDates();
-    refreshChart();
+    refreshChart1();
+    refreshChart2();
   } else {
-    myChart.destroy();
-    getFinalWeekTotal();
+    myChart1.destroy();
+    myChart2.destroy();
+    getDataPoints();
     getArrayOfDates();
-    refreshChart();
+    refreshChart1();
+    refreshChart2();
   }
 }

@@ -2,7 +2,7 @@
 
 * Right now the website works by creating a new goal where you enter some inputs, then log in each study session in "Compose". This will update the chart. I need to set it up so that I can take the data from the table and use that for the chart.
 
-
+  * The mapping and order of functions is all over the place. Write the structure down so that i can easily understand what gets run on what action
   * Add a new chart showing cumulative progress and also plot the cumulative goal on same chart
   * The object with the hours will be available as long as i dont refresh the server but if i go to a new page and then go back to home, the table will refresh. I need to create another function that uses the saved object, and recreates what was there before.
   * Change cell colors of editable values which are the hours for each day

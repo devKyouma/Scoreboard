@@ -278,9 +278,9 @@ function refresh() {
           updateWeekTotal();
 
           ////////// New code specifically for ScoreCard
-          updateChart();
           weeklyDifference();
           cumulativeProgress();
+          updateChart();
           ////////// End of new code specifically for ScoreCard
 
         } else {
@@ -338,19 +338,37 @@ function weeklyDifference() {
 }
 
 // Calculate and enter cumulative progress
-// MUST BE RUN AFTER getFinalWeekTotal SINCE IT USES DATAPOINTS VARIABLE
+// MUST BE RUN AFTER getDataPoints SINCE IT USES weekTotalDataPoints VARIABLE
 function cumulativeProgress() {
   let rowCount = table.rows.length;
+
+
+
+// This portion of the code was taken directly from the getDataPoints functions.
+// I did slighty change the variable by adding "other". I repeated this code bc
+// if i didnt, this function would rely on that function running first, but getDataPoints
+// function cant run correctly unless this gets run. Not good practice but it works.
+  let otherWeekTotalDataPoints = [];
+
+  for (let i = 1; i < rowCount; i++) {
+    let currentWeek = document.getElementsByClassName("weekTotal" + i);
+    let currentWeekValue = Number(currentWeek[0].innerHTML);
+    otherWeekTotalDataPoints.push(currentWeekValue);
+  }
+
+
+
+
 
   for (let i = 1; i < rowCount; i++) {
     let getCumulativeProgress = document.getElementsByClassName("cumulativeProgress" + i);
 
-    // This takes the dataPoints (array of week totals) and cuts it off up to
+    // This takes the weekTotalDataPoints (array of week totals) and cuts it off up to
     // the current row
-    let currentDataPoints = [];
-    currentDataPoints = dataPoints.slice(0, i);
+    let currentWeekTotalDataPoints = [];
+    currentWeekTotalDataPoints = otherWeekTotalDataPoints.slice(0, i);
 
-    let calcCurrentProgress = currentDataPoints.reduce(function(accumlator, currentValue) {
+    let calcCurrentProgress = currentWeekTotalDataPoints.reduce(function(accumlator, currentValue) {
       return accumlator + currentValue;
     }, 0);
 
@@ -377,8 +395,10 @@ function cumulativeGoal() {
 // This is just for testing
 function testing() {
 
-  // let uuu = dataPoints[0] + dataPoints[1];
-  let uuu = dataPoints.splice(0,3);
+  // let uuu = weekTotalDataPoints[0] + weekTotalDataPoints[1];
+  // let uuu = weekTotalDataPoints.splice(0,3);
+  let getDates = document.getElementsByClassName("weekTotal1");
+  let uuu = Number(getDates[0].innerHTML);
 
   console.log(uuu);
 
