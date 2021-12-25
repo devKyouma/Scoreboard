@@ -2,83 +2,11 @@
 <%- include('partials/myheader'); %>
 
 
-<h1><%=startGoals[0].projectName%></h1> <br>
+<h1>this is landing page. maybe show some samples then direct user to the get started page?</h1> <br>
 
-<p class="sameLine">Weekly Goal: </p>
-<p class="sameLine" id="userNumberOfHours"> <%=startGoals[0].goalHoursWeek%> </p> <br>
-<p class="sameLine">Number of Weeks: </p>
-<p class="sameLine" id="userNumberOfWeeks"> <%=startGoals[0].totalWeeks%> </p> <br>
-<p class="sameLine">Total Hours: </p>
-<p class="sameLine"> <%=startGoals[0].totalWeeks * startGoals[0].goalHoursWeek%> </p> <br>
+<a href="showExample">Show me an example</a>
 
-<table id="mainTable">
-  <tr>
-    <th>Week</th>
-    <th>Date</th>
-    <th>Monday</th>
-    <th>Tuesday</th>
-    <th>Wednesday</th>
-    <th>Thursday</th>
-    <th>Friday</th>
-    <th>Saturday</th>
-    <th>Sunday</th>
-    <th>Week Total</th>
-    <th>Weekly Difference</th>
-    <th>Cumulative Progress</th>
-    <th>Cumulative Goal</th>
-  </tr>
-  <tr>
-    <td>1</td>
-    <td id="firstDate" class="date">12/13/21</td>
-    <td class="row1 cells"> </td>
-    <td class="row1 cells"> </td>
-    <td class="row1 cells"> </td>
-    <td class="row1 cells"> </td>
-    <td class="row1 cells"> </td>
-    <td class="row1 cells"> </td>
-    <td class="row1 cells"> </td>
-    <td class="weekTotal1"> </td>
-    <td class="weekDiff1"> </td>
-    <td class="cumulativeProgress1"> </td>
-    <td class="cumulativeGoal1"> </td>
-  </tr>
-</table> <br>
-
-<script src="EditableTable.js"></script>
-
-<!-- End of table -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- //////////////////////////////////////////////////////////// Start of chart -->
-
-<!-- Since my chart is respsonsive, if i want to change the size of the chart
-I can just change the size of my div -->
-<div class="chartBox">
-  <canvas id="myChart1"></canvas>
-</div> <br>
-
-<div class="chartBox">
-  <canvas id="myChart2"></canvas>
-</div>
-
-
-<script src="Chart.js"></script>
-
-<!-- //////////////////////////////////////////////////////////// End of chart -->
-
-
-
+<h1>Contact info</h1>
 
 
 

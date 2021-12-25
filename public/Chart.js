@@ -1,16 +1,11 @@
-// const labels = [
-//   'January',
-//   'February',
-//   'March',
-//   'April',
-//   'May',
-//   'June',
-// ];
+
 
 let labels = [];
 let weekTotalDataPoints = [];
 let cumulativeProgressDataPoints = [];
 let cumulativeGoalDataPoints = [];
+let weeklyGoalDataPoints = [];
+
 
 
 // Plots Weekly Totals
@@ -23,7 +18,14 @@ function refreshChart1() {
       backgroundColor: 'rgb(255, 99, 132)',
       borderColor: 'rgb(255, 99, 132)',
       data: weekTotalDataPoints,
-    }]
+    },
+    {
+      label: 'Weekly Goal',
+      backgroundColor: 'rgb(200, 99, 12)',
+      borderColor: 'rgb(200, 99, 12)',
+      data: weeklyGoalDataPoints,
+    }
+  ]
   };
 
   const config = {
@@ -137,10 +139,11 @@ function getDataPoints() {
   weekTotalDataPoints = [];
   cumulativeProgressDataPoints = [];
   cumulativeGoalDataPoints = [];
+  weeklyGoalDataPoints = [];
 
   let rowCount = table.rows.length;
 
-// All 3 of for loops are doing the same thing. Get each cell in the column,
+// First 3 for loops are doing the same thing. Get each cell in the column,
 // convert the value to a number, then push that number to the array
   for (let i = 1; i < rowCount; i++) {
     let currentWeek = document.getElementsByClassName("weekTotal" + i);
@@ -158,6 +161,12 @@ function getDataPoints() {
     let currentWeek = document.getElementsByClassName("cumulativeGoal" + i);
     let currentWeekValue = Number(currentWeek[0].innerHTML);
     cumulativeGoalDataPoints.push(currentWeekValue);
+  }
+
+  for (let i = 1; i < rowCount; i++) {
+    let currentWeek = document.getElementById("userNumberOfHours");
+    let currentWeekValue = Number(currentWeek.innerHTML);
+    weeklyGoalDataPoints.push(currentWeekValue);
   }
 }
 

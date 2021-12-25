@@ -161,8 +161,8 @@ function updateWeekTotal() {
 function howManyRowsToAdd() {
   // This gets the number inputed into the input
   let getNumberOfWeeks = document.getElementById("userNumberOfWeeks");
-  // Convert it to a number
-  let numberOfRowsToAdd = Number(getNumberOfWeeks.innerHTML);
+  // Convert it to a number and subtracts 1 since there is already 1 row by default
+  let numberOfRowsToAdd = (Number(getNumberOfWeeks.innerHTML) - 1);
 
   // This runs the addNewRow function for the amount of times entered
   for (i = 0; i < numberOfRowsToAdd; i++) {

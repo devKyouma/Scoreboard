@@ -1,4 +1,3 @@
-
 const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
@@ -16,120 +15,131 @@ app.use(bodyParser.urlencoded({
 app.use(express.static("public"));
 
 
-let day1 = {
-  date: "01/01/2021",
-  hours: 2,
-  notes: "did ok"
-}
+let posts = [];
+let startGoals = [];
 
-let day2 = {
-  date: "01/02/2021",
-  hours: 3,
-  notes: "did great"
-}
+// The value of this will change whether the user clicks on the show example path
+let showExample = 1;
 
-let day3 = {
-  date: "01/03/2021",
-  hours: 1,
-  notes: "did bad"
-}
-
-let testGoals = {
-  projectName: "Learn to Code",
-  totalWeeks: 4,
-  goalHoursWeek: 14,
-}
-
-let posts = [day1, day2, day3];
-let startGoals = [testGoals];
-
-
-
-// This sums up all the hours in my array.
-// The reduce method starts at the set number (0) for the accumulator then goes through
-// the array and adds each current value.
-// https://www.youtube.com/watch?v=g1C40tDP0Bk
-let totalHours = posts.reduce(function (accumlator, currentValue){
-  return accumlator + currentValue.hours;
-}, 0);
-
-// console.log(totalHours);
-
-
-
+// This is used for the example to prevent the example data to push multiple
+// times if the user clicks away from page then clicks show example again
+let onlyPushOnce = 0;
 
 
 
 
 
 app.get("/", function(req, res) {
+  res.render("home", {});
+});
 
 
-// This goes through each post and creates an array of each of the dates. I then
-// pass this array to the chart to use as the labels.
-// https://stackoverflow.com/questions/19590865/from-an-array-of-objects-extract-value-of-a-property-as-array
+app.get("/plan", function(req, res) {
+  // This goes through each post and creates an array of each of the dates. I then
+  // pass this array to the chart to use as the labels.
+  // https://stackoverflow.com/questions/19590865/from-an-array-of-objects-extract-value-of-a-property-as-array
   let labels = posts.map(x => x.date);
   // console.log(labels);
 
-// Doing the same thing for the hours
+  // Doing the same thing for the hours
   let hoursData = posts.map(x => x.hours);
   // console.log(hoursData);
 
+  showExample = 0;
 
-  // In this code i am telling the server to run the html file "home"
+
+  // In this code i am telling the server to run the html file "plan"
   // Then pass a second parameter, which is the const above that will pass through html
   // In this second parameter, you pass a object (key: value), where the key is
   // the variable name used in the html, and the value is the value you set it as
-  res.render("home", {
+  res.render("plan", {
     posts: posts,
     labels: labels,
-    hoursData: hoursData,
-    startGoals: startGoals
-  });
-
-
-
-});
-
-app.get("/about", function(req, res) {
-  // It is standard to use the same text for the key and value
-  // but sometimes i get confused so for now I am keeping them different
-  // For example, this works as well: "  res.render("about", {aboutContent: aboutContent});"
-  res.render("about", {
+    startGoals: startGoals,
+    showExample: showExample
   });
 });
 
-app.get("/contact", function(req, res) {
-  res.render("contact", {
-    contactText: contactContent
+
+// This is rendering the same "plan" file but with example data in variables
+app.get("/showExample", function(req, res) {
+
+  let day1 = {
+    date: "01/01/2021",
+    notes: "did ok",
+    id: "example"
+  }
+  let day2 = {
+    date: "01/02/2021",
+    notes: "did great",
+    id: "example"
+  }
+  let day3 = {
+    date: "01/03/2021",
+    notes: "did bad",
+    id: "example"
+  }
+
+  let testGoals = {
+    projectName: "Learn to Code",
+    totalWeeks: 12,
+    goalHoursWeek: 14,
+  }
+
+  // Only push these one time
+  if (onlyPushOnce === 0) {
+    posts.push(day1, day2, day3);
+    startGoals.push(testGoals);
+    onlyPushOnce++;
+  }
+
+  let labels = posts.map(x => x.date);
+
+  let hoursData = posts.map(x => x.hours);
+
+  showExample = 1;
+
+  res.render("plan", {
+    posts: posts,
+    labels: labels,
+    startGoals: startGoals,
+    showExample: showExample
   });
 });
+
+
+
 
 app.get("/compose", function(req, res) {
   res.render("compose", {});
 });
 
+
+
+
 app.post("/compose", function(req, res) {
   const userPost = {
     date: req.body.composeDate,
-    hours: Number(req.body.composeHours),
     notes: req.body.composeNotes
   };
 
   posts.push(userPost);
-  console.log("Logging posts below: ");
+
+  // This removes the examples from the posts
+  posts = posts.filter(function(post) {
+    return post.id !== "example";
+  });
+
+  console.log("Logging notes below: ");
   console.log(posts);
 
   // let xxx = posts[0].title;
   // let yyy = xxx.replace(" ", "-").toLowerCase();
   // console.log(yyy);
 
-  res.redirect("/");
+  res.redirect("/plan");
 
-})
-
-
-
+});
 
 
 
@@ -150,19 +160,25 @@ app.post("/start", function(req, res) {
     goalHoursWeek: Number(req.body.composeGoalHoursWeek)
   };
 
+  // First reset startGoals to remove example, then push the new user input
+  startGoals = [];
   startGoals.push(userGoals);
+  // console.log("Logging starting goals below: ");
+  // console.log(startGoals);
+  // startGoals.shift();
   console.log("Logging starting goals below: ");
   console.log(startGoals);
-  startGoals.shift();
-  console.log("Logging starting goals below: ");
-  console.log(startGoals);
-
-  res.redirect("/");
-
-})
 
 
+  // This removes the examples from the posts
+  posts = posts.filter(function(post) {
+    return post.id !== "example";
+  });
 
+
+  res.redirect("/plan");
+
+});
 
 
 
