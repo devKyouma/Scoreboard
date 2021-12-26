@@ -66,17 +66,17 @@ app.get("/showExample", function(req, res) {
 
   let day1 = {
     date: "01/01/2021",
-    notes: "did ok",
+    notes: "I wrote my first hello world line",
     id: "example"
   }
   let day2 = {
     date: "01/02/2021",
-    notes: "did great",
+    notes: "Learned if statements but struggled with for loops",
     id: "example"
   }
   let day3 = {
     date: "01/03/2021",
-    notes: "did bad",
+    notes: "Built my first website",
     id: "example"
   }
 
@@ -137,7 +137,14 @@ app.post("/compose", function(req, res) {
   // let yyy = xxx.replace(" ", "-").toLowerCase();
   // console.log(yyy);
 
-  res.redirect("/plan");
+// If a note is entered before a new project there will be an error going to the
+// plan page. So this redirects the user to create a project in that case.
+  if (startGoals.length === 0) {
+    res.redirect("/start");
+  } else {
+    res.redirect("/plan");
+  }
+
 
 });
 

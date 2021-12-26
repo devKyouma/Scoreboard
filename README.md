@@ -2,7 +2,8 @@
 
 * Right now the website works by creating a new goal where you enter some inputs, then log in each study session in "Compose". This will update the chart. I need to set it up so that I can take the data from the table and use that for the chart.
 
-  * If i try to write notes before i create a new project i get an error. Fix this
+  * Create a get started page with instructions
+  * Create a checklist of overall goals during the project
   * Find a way to "save" the user inputs in the table. If the user enters data then clicks on notes to write a note, they will be redirected to an empty table
   * Add random useful stats. Day that you studied most. Number of times you hit weekly goal. Longest streak without a 0.  
   * The mapping and order of functions is all over the place. Write the structure down so that i can easily understand what gets run on what action
@@ -15,9 +16,6 @@
   * Look into possible alternatives to detroying chart to recreate one. Maybe using the update function?
   * In the EditableTable file, i should have made the weekTotalx IDs instead of classes. There is only going to be one cell for each week total and that would make it cleaner.
 
-# Done
-
-* Create a function that creates an object of the all the week totals with date as key and hours as value.
 
 
 # Notes
