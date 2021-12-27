@@ -2,12 +2,12 @@
 
 * Right now the website works by creating a new goal where you enter some inputs, then log in each study session in "Compose". This will update the chart. I need to set it up so that I can take the data from the table and use that for the chart.
 
+  * Change cell colors of editable values which are the hours for each day
   * Create a get started page with instructions
   * Create a checklist of overall goals during the project
   * Find a way to "save" the user inputs in the table. If the user enters data then clicks on notes to write a note, they will be redirected to an empty table
   * Add random useful stats. Day that you studied most. Number of times you hit weekly goal. Longest streak without a 0.  
   * The mapping and order of functions is all over the place. Write the structure down so that i can easily understand what gets run on what action
-  * Change cell colors of editable values which are the hours for each day
 
 # Lower Priority
 

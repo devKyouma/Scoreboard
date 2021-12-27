@@ -35,7 +35,7 @@
 .footer {
   /* This position absolute was in the given file, not sure why she would do this */
   /* It makes the post go beyond the footer if there area lot */
-  /* position: absolute; */
+  position: absolute;
   text-align: center;
   bottom: 0;
   width: 100%;
@@ -50,8 +50,12 @@
   color: #fff;
 }
 
+/* This helps fix where the footer is */
+/* https://www.freecodecamp.org/news/how-to-keep-your-footer-where-it-belongs-59c6aa05c59c/ */
 .content {
   padding-top: 40px;
+  position: relative;
+  min-height: 100vh;
 }
 
 .sameLine {
@@ -94,13 +98,14 @@ th {
 }
 
 .homeText {
-  margin-top: 200px;
-  height: 600px;
-  width: 500px;
+  margin-top: 300px;
+  /* height: 600px; */
+  padding: 0 50px 0 0;
 }
 
 .btn {
   background-color: #007ea7;
+  border-color: #007ea7;
   color: white;
   font-weight: bold;
 }
@@ -114,4 +119,37 @@ th {
   background-color: white;
   border-color: black;
   color: black;
+}
+
+/* This forces the image to fit the div so it keeps its aspect ratio */
+/* https://pqina.nl/blog/resize-images-proportionally-while-keeping-the-aspect-ratio/ */
+.homeImage {
+  margin-top: 200px;
+  object-fit: cover;
+  max-width: 100%;
+}
+
+.imageDiv {
+  height: 1200px;
+}
+
+.navbar-toggler {
+  /* background-color: gray; */
+  border-color: black;
+  width: 55px;
+}
+
+/* For some reason i couldnt align the text, so i had to play around with margin
+to make it look right */
+.dropDown {
+  color: black;
+  margin-right: 40px;
+}
+
+.newGoalPage, .notesPage {
+  margin-bottom: 60px !important;
+}
+
+.newGoalPageBtn {
+  margin-bottom: 150px;
 }

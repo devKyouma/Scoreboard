@@ -18,10 +18,12 @@
   <nav class="navbar navbar-custom navbar-expand-lg">
     <div class="container">
       <a class="navbar-brand" href="/">Scoreboard Builder</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
-        <span class="navbar-toggler-icon"></span>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar" aria-controls="collapsibleNavbar" aria-expanded="false" aria-label="Toggle navigation">
+        <!-- I dont know why the dropdown icon isnt showing up, I just put a V
+        here as a placeholder -->
+        <span class="navbar-toggler-icon dropDown">V</span>
       </button>
-      
+
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
 
         <ul class="navbar-nav ms-auto">
@@ -29,7 +31,7 @@
             <a class="nav-link" href="/">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/start">New Project</a>
+            <a class="nav-link" href="/start">New Goal</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/compose">Notes</a>
