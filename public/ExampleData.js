@@ -3,7 +3,7 @@
 // If there is no example, the id "showingExample" doesnt exist, giving an error.
 let showingExample = document.getElementById("showingExample");
 try {
-  if (showingExample.innerHTML === "This is an example") {
+  if (showingExample.innerHTML === "EXAMPLE") {
     exampleTableData();
   }
 } catch {}

@@ -69,6 +69,7 @@ table, th, td {
   border: 1px solid black;
   padding: 5px;
   text-align: center;
+  color: gray;
 }
 
 table {
@@ -76,19 +77,28 @@ table {
   margin-right: auto;
   width: 100%;
   table-layout: fixed;
+  margin-bottom: 100px;
 }
 
 tr:nth-child(even) {
-  background-color: #dddddd;
+  background-color: #ccdbdc;
 }
 
 th {
-  background-color: gray;
+  background-color: #007ea7;
   color: white;
 }
 
+.cells {
+  color: black;
+}
+
 /* End of table format */
-.chartBox {
+
+
+
+.chartBox1, .chartBox2 {
+  margin: 100px 0 100px 0;
   width: 100%;
 }
 
@@ -110,6 +120,13 @@ th {
   font-weight: bold;
 }
 
+.btn:hover {
+  background-color: white;
+  border-color: #007ea7;
+  color: black;
+  font-weight: bold;
+}
+
 .startBtn {
   margin: 50px 50px 0 0;
 }
@@ -119,6 +136,12 @@ th {
   background-color: white;
   border-color: black;
   color: black;
+  font-weight: bold;
+}
+
+.exampleBtn:hover {
+  background-color: #007ea7;
+  color: white;
 }
 
 /* This forces the image to fit the div so it keeps its aspect ratio */
@@ -152,4 +175,15 @@ to make it look right */
 
 .newGoalPageBtn {
   margin-bottom: 150px;
+}
+
+
+.getStartedBox1 {
+  background-color: #003249;
+  color: white;
+}
+
+.testingA {
+  color: red;
+ text-decoration:
 }

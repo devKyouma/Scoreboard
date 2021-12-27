@@ -140,7 +140,7 @@ app.post("/compose", function(req, res) {
 // If a note is entered before a new project there will be an error going to the
 // plan page. So this redirects the user to create a project in that case.
   if (startGoals.length === 0) {
-    res.redirect("/start");
+    res.redirect("/newGoal");
   } else {
     res.redirect("/plan");
   }
@@ -156,11 +156,11 @@ app.post("/compose", function(req, res) {
 
 
 
-app.get("/start", function(req, res) {
-  res.render("start", {});
+app.get("/newGoal", function(req, res) {
+  res.render("newGoal", {});
 });
 
-app.post("/start", function(req, res) {
+app.post("/newGoal", function(req, res) {
   const userGoals = {
     projectName: req.body.composeProjectName,
     totalWeeks: Number(req.body.composeTotalWeeks),
@@ -186,6 +186,15 @@ app.post("/start", function(req, res) {
   res.redirect("/plan");
 
 });
+
+
+app.get("/getStarted", function(req, res) {
+  res.render("getStarted", {});
+});
+
+
+
+
 
 
 
