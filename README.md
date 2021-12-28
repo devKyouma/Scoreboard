@@ -2,25 +2,22 @@
 
 * Right now the website works by creating a new goal where you enter some inputs, then log in each study session in "Compose". This will update the chart. I need to set it up so that I can take the data from the table and use that for the chart.
 
-  * Separate the plan page for example and for a real project
-  * In Notes, have the date default to today
-  * Add the Plan page back in the navbar, maybe name it My Progress. If they click this before adding a new goal have some text that directs them to get started
-  * Finish text inside get started boxes
+  * format charts
+  * Format the error page
   * Check all the pages for behavior when screen size changes
-  * Create a get started page with instructions
-  * Create a checklist of overall goals during the project
   * Find a way to "save" the user inputs in the table. If the user enters data then clicks on notes to write a note, they will be redirected to an empty table
-  * Add random useful stats. Day that you studied most. Number of times you hit weekly goal. Longest streak without a 0.  
-  * The mapping and order of functions is all over the place. Write the structure down so that i can easily understand what gets run on what action
+
 
 # Lower Priority
 
+  * Improve text inside get started boxes
   * Fix structure of convertWeekTotalCellsToArray function so that Im not creating an array with only one value. So instead of an array which has arrays of each week total, it will just be an array of the week totals. I think i can just move the "calcWeekTotalArray" and push outside the for loop and it should work. But i would also need to update the updateWeekTotal function too.
   * Read more about "window." and why i have to use this for my charts to destory it.
   * Look into possible alternatives to detroying chart to recreate one. Maybe using the update function?
   * In the EditableTable file, i should have made the weekTotalx IDs instead of classes. There is only going to be one cell for each week total and that would make it cleaner.
-
-
+  * Create a checklist of overall goals during the project
+  * Add random useful stats. Day that you studied most. Number of times you hit weekly goal. Longest streak without a 0.  
+  * The mapping and order of functions is all over the place. Write the structure down so that i can easily understand what gets run on what action
 
 # Notes
 

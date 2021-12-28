@@ -15,14 +15,14 @@ function refreshChart1() {
     labels: labels,
     datasets: [{
       label: 'Weekly Total Hours',
-      backgroundColor: 'rgb(255, 99, 132)',
-      borderColor: 'rgb(255, 99, 132)',
+      backgroundColor: "#003249",
+      borderColor: "#003249",
       data: weekTotalDataPoints,
     },
     {
       label: 'Weekly Goal',
-      backgroundColor: 'rgb(200, 99, 12)',
-      borderColor: 'rgb(200, 99, 12)',
+      backgroundColor: "#9ad1d4",
+      borderColor: "#9ad1d4",
       data: weeklyGoalDataPoints,
     }
   ]
@@ -47,7 +47,7 @@ function refreshChart1() {
         },
         title: {
           display: true,
-          text: 'Custom Chart Title'
+          text: 'Weekly Progress'
         }
       }
 
@@ -75,14 +75,14 @@ function refreshChart2() {
     labels: labels,
     datasets: [{
         label: 'Progress',
-        backgroundColor: 'rgb(255, 99, 132)',
-        borderColor: 'rgb(255, 99, 132)',
+        backgroundColor: "#003249",
+        borderColor: "#003249",
         data: cumulativeProgressDataPoints,
       },
       {
         label: 'Goal',
-        backgroundColor: 'rgb(200, 99, 12)',
-        borderColor: 'rgb(200, 99, 12)',
+        backgroundColor: "#9ad1d4",
+        borderColor: "#9ad1d4",
         data: cumulativeGoalDataPoints,
       }
     ]
@@ -107,7 +107,7 @@ function refreshChart2() {
         },
         title: {
           display: true,
-          text: 'Custom Chart Title'
+          text: 'Cumulative Progress'
         }
       }
 

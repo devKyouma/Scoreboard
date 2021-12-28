@@ -2,15 +2,18 @@
 <%- include('partials/myheader'); %>
 
 
+<!-- If this text changes you have to change it in ExampleData.js bc it reads
+this line to determine whether or not to run the example data -->
+<h1 id="showingExample">EXAMPLE</h1> <br>
 
-<h1><%=startGoals[0].projectName%></h1> <br>
+<h1><%=startGoalsExample[0].projectName%></h1> <br>
 
 <p class="sameLine">Weekly Goal: </p>
-<p class="sameLine" id="userNumberOfHours"> <%=startGoals[0].goalHoursWeek%> </p> <br>
+<p class="sameLine" id="userNumberOfHours"> <%=startGoalsExample[0].goalHoursWeek%> </p> <br>
 <p class="sameLine">Number of Weeks: </p>
-<p class="sameLine" id="userNumberOfWeeks"> <%=startGoals[0].totalWeeks%> </p> <br>
+<p class="sameLine" id="userNumberOfWeeks"> <%=startGoalsExample[0].totalWeeks%> </p> <br>
 <p class="sameLine">Total Hours: </p>
-<p class="sameLine"> <%=startGoals[0].totalWeeks * startGoals[0].goalHoursWeek%> </p> <br>
+<p class="sameLine"> <%=startGoalsExample[0].totalWeeks * startGoalsExample[0].goalHoursWeek%> </p> <br>
 
 <table id="mainTable">
   <tr>
@@ -82,7 +85,7 @@ I can just change the size of my div -->
 
 <h1>Notes</h1> <br>
 
-<% posts.forEach(function(eachPost) { %>
+<% postsExample.forEach(function(eachPost) { %>
 <h1><%=eachPost.date%></h1>
 <!-- Instead of posting the entire post on the home page, i am showing only -->
 <!-- the first 100 characters and adding a "...", but only adding that if  -->
