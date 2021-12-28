@@ -12,6 +12,10 @@
   padding-bottom: 70px;
 }
 
+.getStartedContainer {
+  margin: 200px 0 200px 0;
+}
+
 .navbar {
   padding-top: 15px;
   padding-bottom: 15px;
@@ -178,12 +182,29 @@ to make it look right */
 }
 
 
-.getStartedBox1 {
+.getStartedBox {
   background-color: #003249;
   color: white;
+  padding: 40px;
+  height: 300px;
 }
 
-.testingA {
-  color: red;
- text-decoration:
+.anchorText {
+  color: white;
+  text-decoration: none;
+}
+
+.getStartedArrow1 {
+  text-align: center;
+  margin: auto;
+}
+
+.getStartedArrow1Row {
+  height: 200px;
+
+}
+
+.getStartedArrow2 {
+  text-align: center;
+  margin: auto;
 }

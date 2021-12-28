@@ -2,7 +2,11 @@
 
 * Right now the website works by creating a new goal where you enter some inputs, then log in each study session in "Compose". This will update the chart. I need to set it up so that I can take the data from the table and use that for the chart.
 
-  * Figure out a way to make the div in get started clickable. The anchor tag works but i dont like the formatting it forces. Maybe use an onclick function?
+  * Separate the plan page for example and for a real project
+  * In Notes, have the date default to today
+  * Add the Plan page back in the navbar, maybe name it My Progress. If they click this before adding a new goal have some text that directs them to get started
+  * Finish text inside get started boxes
+  * Check all the pages for behavior when screen size changes
   * Create a get started page with instructions
   * Create a checklist of overall goals during the project
   * Find a way to "save" the user inputs in the table. If the user enters data then clicks on notes to write a note, they will be redirected to an empty table
