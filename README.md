@@ -1,15 +1,11 @@
+* 12/28/21 The website is mostly complete. It functionally works and the design is mostly what I had in mind. There are still many improvements I can make but will stop here to work on other things. It will be a good challenge to try to pick this up again later with new tools I learned to apply. I think I took good notes on the code within the files but lacking in notes on the overall structure of how it all works.
+
 # To Do List
 
-* Right now the website works by creating a new goal where you enter some inputs, then log in each study session in "Compose". This will update the chart. I need to set it up so that I can take the data from the table and use that for the chart.
-
-  * format charts
+  * I got to the point where i saved the data in the table. Now i need to pass those back to the table if there was data saved. Also need to save notes. 
+  * Format Notes at bottom of Plan page
   * Format the error page
   * Check all the pages for behavior when screen size changes
-  * Find a way to "save" the user inputs in the table. If the user enters data then clicks on notes to write a note, they will be redirected to an empty table
-
-
-# Lower Priority
-
   * Improve text inside get started boxes
   * Fix structure of convertWeekTotalCellsToArray function so that Im not creating an array with only one value. So instead of an array which has arrays of each week total, it will just be an array of the week totals. I think i can just move the "calcWeekTotalArray" and push outside the for loop and it should work. But i would also need to update the updateWeekTotal function too.
   * Read more about "window." and why i have to use this for my charts to destory it.

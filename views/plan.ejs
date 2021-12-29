@@ -52,7 +52,10 @@
 <!-- End of table -->
 
 
-
+<form action="/plan" method="post">
+  <input type="text" id="saveInput" class="form-control" name="savedData" ></input>
+  <button type="submit" class="btn" onclick="saveUserData()">Save</button>
+</form>
 
 
 
@@ -88,8 +91,7 @@ I can just change the size of my div -->
 <!-- the first 100 characters and adding a "...", but only adding that if  -->
 <!-- the post had more than 100 characters. So i used a new if shortcut i learned  -->
 <!-- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator -->
-<p> <%=eachPost.notes.slice(0, 100) + (eachPost.notes.length > 100 ? " ..." : "")%>
-</p> <br>
+<p> <%=eachPost.notes%></p> <br>
 <% }) %>
 
 

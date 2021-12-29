@@ -26,6 +26,8 @@
 // Created a global variable that holds all the daily hours rows and week total cells
 let arrayOfDailyHoursRows = [];
 let arrayOfWeekTotalCells = [];
+let saveCells = [];
+
 
 
 let table = document.getElementById("mainTable");
@@ -389,7 +391,21 @@ function cumulativeGoal() {
 }
 
 
+// Save the user entered data. This is similar to getDataPoints in Chart.js. I
+// run a for loop that pushes each value of the cells into the empty array.
+function saveUserData() {
+  // console.log(cells.length);
+  saveCells = [];
 
+  for (let i = 0; i < cells.length; i++) {
+    let cellsDataPoint = Number(cells[i].innerHTML);
+    saveCells.push(cellsDataPoint);
+  }
+  // console.log(saveCells);
+
+  let saveInput = document.getElementById("saveInput");
+  saveInput.value = saveCells;
+}
 
 
 // This is just for testing
@@ -397,10 +413,33 @@ function testing() {
 
   // let uuu = weekTotalDataPoints[0] + weekTotalDataPoints[1];
   // let uuu = weekTotalDataPoints.splice(0,3);
-  let getDates = document.getElementsByClassName("weekTotal1");
-  let uuu = Number(getDates[0].innerHTML);
+  // let getDates = document.getElementsByClassName("weekTotal1");
+  // let uuu = Number(getDates[0].innerHTML);
 
-  console.log(uuu);
+  // console.log(cells.length);
+  // let saveCells = [];
+  //
+  // for (let i = 0; i < cells.length; i++) {
+  //   let cellsDataPoint = Number(cells[i].innerHTML);
+  //   saveCells.push(cellsDataPoint);
+  // }
+  // // let newArray = Array.from(cells);
+  //
+  // console.log(saveCells);
+
+  saveCells = [];
+
+  for (let i = 0; i < cells.length; i++) {
+    let cellsDataPoint = Number(cells[i].innerHTML) + ",";
+    saveCells.push(cellsDataPoint);
+  }
+  console.log(saveCells);
+
+
+  let xxx = 3;
+  let savingCell = document.getElementById("saveInput");
+  savingCell.value = saveCells;
+
 
 }
 

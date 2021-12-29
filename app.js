@@ -17,6 +17,7 @@ app.use(express.static("public"));
 
 let posts = [];
 let startGoals = [];
+let savedData = [];
 
 // This is used to check whether the user entered a goal. Default is 0, then when
 // the user enters a goal it comes 1
@@ -151,11 +152,6 @@ app.post("/compose", function(req, res) {
 
   posts.push(userPost);
 
-  // This removes the examples from the posts
-  posts = posts.filter(function(post) {
-    return post.id !== "example";
-  });
-
   console.log("Logging notes below: ");
   console.log(posts);
 
@@ -226,40 +222,27 @@ app.get("/getStarted", function(req, res) {
 
 
 
+// Get the saved data. This data is the user entered data in the table
+app.post("/plan", function(req, res) {
+
+  // This gets the user saved data as a string from the input
+  let userSavedDataString = req.body.savedData;
+  // This converts that string into an array
+  let userSavedDataArray = userSavedDataString.split(",");
+  savedData.push(userSavedDataArray);
+
+});
 
 
-// https://expressjs.com/en/guide/routing.html
-// route parameters lecture 305
-// This creates an object with a key of the url string after the colon (postName) and
-// the value is whatever is typed in its place
-// The colon and string after it is like a variable for what the use types
-app.get("/post/:postName", function(req, res) {
 
-  // This outputs the object when you go to the url
-  // res.write(req.params.postName);
 
-  // Convert title to lower case and replace spaces with dashes
-  // Video says to use lodash library for this but i think its easier to just do this
-  let urlTitle = req.params.postName.replaceAll(" ", "-").toLowerCase();
 
-  // This checks if the title in the url matches any of the titles in the array
-  posts.forEach(function(post) {
-    // Also have to adjust title in array to remove space and change spaces
-    if (post.title.replaceAll(" ", "-").toLowerCase() === urlTitle) {
-      // console.log(post);
 
-      // If the url they typed matched one of the titles, this code will run the html on
-      // post.ejs. I then pass the post which is a single object within the array (since this
-      // is within a forEach loop) into the html file
-      res.render("post", {
-        post: post,
-      });
 
-    }
 
-  });
 
-})
+
+
 
 
 app.listen(3000, function() {
