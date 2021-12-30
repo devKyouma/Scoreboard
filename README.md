@@ -1,8 +1,9 @@
-* 12/28/21 The website is mostly complete. It functionally works and the design is mostly what I had in mind. There are still many improvements I can make but will stop here to work on other things. It will be a good challenge to try to pick this up again later with new tools I learned to apply. I think I took good notes on the code within the files but lacking in notes on the overall structure of how it all works.
+* 12/29/21 The website is mostly complete. It functionally works and the design is mostly what I had in mind. There are still many improvements I can make but will stop here to work on other things. It will be a good challenge to try to pick this up again later with new tools I learned to apply. I think I took good notes on the code within the files but lacking in notes on the overall structure of how it all works.
 
 # To Do List
 
-  * I got to the point where i saved the data in the table. Now i need to pass those back to the table if there was data saved. Also need to save notes. 
+  * Things gets messed up when you add a new goal when you already have one. This website is built for only one goal at a time so maybe add functionally for multiple goals and a way to save a completed goal.
+  * Save notes. I can run a similar process that I used to save the data in the table, check notes on 12/29/21.
   * Format Notes at bottom of Plan page
   * Format the error page
   * Check all the pages for behavior when screen size changes
@@ -22,3 +23,5 @@
   * https://expressjs.com/en/starter/static-files.html
 
 * 12/21/21 - The structure of the "arrayOfWeekTotalCells" was confusing me because there are 3 layers of arrays so it took me a while to figure out how to convert that into another array of the actual values (currently it is an array that references each cell that stores the value). It is an array that contains arrays for each row (which only contain one value so it doesnt even need to be an array), which contains the reference to each week total cell. So I have to map it twice to get the innerHTML.
+
+* 12/29/21. Figuring out how to "save" the user entered data to the table was difficult but I found a way. It might not be the most efficient but I am proud of it and it works. I added a button that runs a function that converts all the values in the editable cells into an array. The function then targets an input (its hidden so you cant actually see it) in the same form as the as the button and writes the array (as a string) in the input. Then the form is submitted and posted. In app.js, I take the string and save it within express as "savedData" and change "didUserSaveData" to 1 so it knows there is saved data available. Now I can pass "savedData" back to the /plan page. Now that "didUserSaveData" is 1, it will write a hidden h1 of the array and run LoadSavedData.js. This file recognizes the hidden h1 with the data, converts it back to an array (since it was passed as a string), change all the cells back to the saved values, and run the necessary functions to make the page operational.

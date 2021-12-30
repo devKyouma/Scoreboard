@@ -1,8 +1,6 @@
 <!-- This lets you use a header from a different html file -->
 <%- include('partials/myheader'); %>
 
-
-
 <h1><%=startGoals[0].projectName%></h1> <br>
 
 <p class="sameLine">Weekly Goal: </p>
@@ -103,6 +101,18 @@ I can just change the size of my div -->
 <script src="Chart.js"></script>
 <script src="EditableTable.js"></script>
 <script src="ExampleData.js"></script>
+
+
+<%# This checks for saved data and if there is, it will change all the innerHTML
+to the saved array. I also styled it to be hidden. %>
+<% if (didUserSaveData === 1) { %>
+    <h1 id="loadSavedData" ><%=savedData%></h1>
+    <script src="LoadSavedData.js"></script>
+<% } %>
+
+
+
+
 
 <!-- This lets you use a footer from a different html file -->
 <%- include('partials/footer'); %>

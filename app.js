@@ -23,11 +23,8 @@ let savedData = [];
 // the user enters a goal it comes 1
 let didUserEnterGoal = 0;
 
-// This is used for the example to prevent the example data to push multiple
-// times if the user clicks away from page then clicks show example again
-let onlyPushOnce = 0;
-
-
+// This changes to 1 if the user saved their table of hours logged
+let didUserSaveData = 0;
 
 
 
@@ -65,15 +62,17 @@ app.get("/plan", function(req, res) {
   // console.log(hoursData);
 
 
-if (didUserEnterGoal === 1) {
-  res.render("plan", {
-    posts: posts,
-    labels: labels,
-    startGoals: startGoals,
-  });
-} else if (didUserEnterGoal === 0) {
-  res.render("errorPage", {});
-}
+  if (didUserEnterGoal === 1) {
+    res.render("plan", {
+      posts: posts,
+      labels: labels,
+      startGoals: startGoals,
+      savedData: savedData,
+      didUserSaveData: didUserSaveData
+    });
+  } else if (didUserEnterGoal === 0) {
+    res.render("errorPage", {});
+  }
 
   // In this code i am telling the server to run the html file "plan"
   // Then pass a second parameter, which is the const above that will pass through html
@@ -107,13 +106,6 @@ app.get("/showExample", function(req, res) {
     totalWeeks: 12,
     goalHoursWeek: 14,
   }
-
-  // Only push these one time
-  // if (onlyPushOnce === 0) {
-  //   posts.push(day1, day2, day3);
-  //   startGoals.push(testGoals);
-  //   onlyPushOnce++;
-  // }
 
   let postsExample = [day1, day2, day3];
   let startGoalsExample = [testGoals];
@@ -225,17 +217,17 @@ app.get("/getStarted", function(req, res) {
 // Get the saved data. This data is the user entered data in the table
 app.post("/plan", function(req, res) {
 
+  savedData = [];
+
   // This gets the user saved data as a string from the input
   let userSavedDataString = req.body.savedData;
-  // This converts that string into an array
-  let userSavedDataArray = userSavedDataString.split(",");
-  savedData.push(userSavedDataArray);
+  savedData.push(userSavedDataString);
+
+  didUserSaveData = 1;
+
+  res.redirect("/plan");
 
 });
-
-
-
-
 
 
 
